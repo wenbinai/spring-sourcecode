@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+}
+
+group 'com.roy.ioc'
+version '5.2.13.RELEASE'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile(project(":spring-beans"))
+    compile(project(":spring-core"))
+    optional(project(":spring-aop"))
+    optional(project(":spring-context"))
+}
