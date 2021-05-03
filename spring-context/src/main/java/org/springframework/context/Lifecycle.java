@@ -1,18 +1,3 @@
-/*
- * Copyright 2002-2018 the original author or authors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 
 package org.springframework.context;
 
@@ -40,20 +25,16 @@ package org.springframework.context;
  * {@link SmartLifecycle} interface provides sophisticated integration with the
  * application context's startup and shutdown phases.
  *
- * @author Juergen Hoeller
- * @since 2.0
- * @see SmartLifecycle
- * @see ConfigurableApplicationContext
- * @see org.springframework.jms.listener.AbstractMessageListenerContainer
- * @see org.springframework.scheduling.quartz.SchedulerFactoryBean
  */
 public interface Lifecycle {
 
 	/**
 	 * Start this component.
 	 * <p>Should not throw an exception if the component is already running.
+	 * 如果组件已经在运行，则不应抛出异常。
 	 * <p>In the case of a container, this will propagate the start signal to all
 	 * components that apply.
+	 * 对于容器，这会将启动信号传播到所有适用的组件
 	 * @see SmartLifecycle#isAutoStartup()
 	 */
 	void start();
@@ -80,6 +61,8 @@ public interface Lifecycle {
 	 * <p>In the case of a container, this will return {@code true} only if <i>all</i>
 	 * components that apply are currently running.
 	 * @return whether the component is currently running
+	 *
+	 * 检查组件是否正在运行 (注意: 如果是容器, 只有当前容器中所有组件都在运行才会返回true, 无论该组件是否在运行)
 	 */
 	boolean isRunning();
 
